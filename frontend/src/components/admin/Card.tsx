@@ -65,7 +65,9 @@ const Card: React.FC<{ estado?: string; fechaInicial?: string; fechaFinal?: stri
           <div>{incidencia.imagen !== null ? incidencia.imagen : "no datos"}</div>
           <div>{incidencia.estado ? incidencia.estado : "no datos"}</div>
           <div>{incidencia.fecha_reporte}</div>
-          <button onClick={() => handleDelete(incidencia.id)}>Delete</button>
+          <div>
+          <button className="bg-danger text-white" onClick={() => handleDelete(incidencia.id)}>Delete</button>
+          <button className="bg-primary text-white" >Edit</button></div>
         </div>
       ))}
     </div>
