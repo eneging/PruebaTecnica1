@@ -1,11 +1,13 @@
 import { useState } from "react";
 import Card from "./Card"
+import axios from "axios";
 
 function dashboardAdmin() {
     const [fechaInicial, setFechaInicial] = useState<string>('');
     const [fechaFinal, setFechaFinal] = useState<string>('');
     const [estado, setEstado] = useState<string>('');
   
+
     const handleFechaInicialChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFechaInicial(event.target.value);
       };
@@ -16,6 +18,9 @@ function dashboardAdmin() {
   
     const handleEstadoChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
       setEstado(event.target.value);}
+
+
+    
 
   return (
 
@@ -47,8 +52,7 @@ function dashboardAdmin() {
 
       <select value={estado} onChange  ={handleEstadoChange}>
         <option value="">Seleccionar estado</option>
-        <option value="En Progreso">En Progreso</option>
-        <option value="Preparado">Preparado</option>
+        <option value="En progreso">En Progreso</option>
         <option value="Completado">Completado</option>
         <option value="Error">Error</option>
       </select>
@@ -66,7 +70,7 @@ function dashboardAdmin() {
     <div>imagen</div>
     <div>estado</div>
     <div>Fecha reporte</div>
-
+    <div>accion</div>
 
         </div>
         <Card estado = {estado} fechaInicial={fechaInicial}   fechaFinal ={fechaFinal} ></Card>

@@ -6,7 +6,7 @@ export const createInsidencia = async (req, res, next) => {
     const { usuario_id, ubicacion,tipo,descripcion,estado, fecha_reporte,imagen } = req.body;
 
     const newIncidencia = await pool.query(
-      `INSERT INTO incidencias (usuario_id, ubicacion, tipo, descripcion, estado, fecha_reporte, imagen) VALUES($1, $2, $3, $4, $5,$6  $7,$8) RETURNING *`,
+      `INSERT INTO incidencias (usuario_id, ubicacion, tipo, descripcion, estado, fecha_reporte, imagen) VALUES($1, $2, $3, $4, $5,$6 , $7) RETURNING *`,
       [usuario_id, ubicacion, tipo, descripcion, estado, fecha_reporte , imagen]
     );
     console.log(req.body)

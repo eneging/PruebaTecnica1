@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2'
 
 const dashboard: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ const dashboard: React.FC = () => {
     descripcion: '',
     fecha_reporte: '',
     imagen: '',
-    estado:'En proceso',
+    estado:'En progreso',
     id: ''
   });
   const [error, setError] = useState<string | null>(null);
@@ -22,8 +23,10 @@ const dashboard: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     try {
       const response = await axios.post('http://localhost:5000/tasks', formData);
+   
       console.log('Registro creado:', response.data);
       setFormData({
         usuario_id: '',
@@ -35,12 +38,16 @@ const dashboard: React.FC = () => {
        estado:'',
         id: ''
       });
-      setError(null); // Limpiar el error si la solicitud es exitosa
+      setError(null); 
+
+      
     } catch (error) {
+      console.log(formData);
       console.error('Error al crear el registro:', error);
-      setError('Error al crear el registro. Por favor, intenta de nuevo.'); // Manejar error
+      setError('Error al crear el registro. Por favor, intenta de nuevo.'); 
     }
   };
+
   return (
     <>
 <nav   className="navbar bg-body-tertiary  ">
@@ -83,8 +90,8 @@ const dashboard: React.FC = () => {
           <input type="file" className="form-control" id="imagen" name="imagen" onChange={handleChange} />
         </div>
         <div className="mb-3">
-          <label htmlFor="id" className="form-label">ID</label>
-          <input type="text" className="form-control" id="id" name="id" value={formData.id} onChange={handleChange} />
+          
+         
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
