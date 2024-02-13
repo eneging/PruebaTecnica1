@@ -1,0 +1,3 @@
+rutas    
+   /residente
+  /admin 
